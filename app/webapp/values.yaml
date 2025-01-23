@@ -2,6 +2,23 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+provision:
+  jaeger: true
+
+jaeger: 
+  provisionDataStore:
+    cassandra: false
+  allInOne:
+    enabled: true # for dev/test purposes!
+  storage:
+    type: memory
+  agent:
+    enabled: false
+  collector:
+    enabled: false
+  query:
+    enabled: false
+
 replicaCount: 1
 
 image:
@@ -10,15 +27,15 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.1"
 
-environments:
+environment:
   - name: ASPNETCORE_ENVIRONMENT
     value: Production
   - name: OTEL_EXPORTER_JAEGER_AGENT_HOST
-    value: "jaeger-agent.observability.svc.cluster.local"
+    value: "shipy-jaeger-agent.shipy.svc.cluster.local"
   - name: OTEL_EXPORTER_JAEGER_AGENT_PORT
     value: "6831"
   - name: OTEL_EXPORTER_JAEGER_ENDPOINT
-    value: "http://jaeger-collector.observability.svc.cluster.local:14268"
+    value: "http://shipy-jaeger-collector.shipy.svc.cluster.local:14268"
   - name: APIServiceLocations__CustomerManagementAPI
     value: "customermanagementapi.shipy.svc.cluster.local:5100"
   - name: APIServiceLocations__ShipManagementAPI

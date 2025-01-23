@@ -1,6 +1,12 @@
 apiVersion: v2
 name: webapp
 description: A Helm chart for webapp of Shipys
+dependencies: 
+- condition: provision.jaeger
+  name: jaeger
+  repository: https://jaegertracing.github.io/helm-charts
+  version: 0.56.0 
+    
 type: application
 version: 0.1.0
 appVersion: "1.1.0"
