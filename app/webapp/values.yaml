@@ -21,6 +21,9 @@ jaeger:
 
 replicaCount: 1
 
+container:
+  name: ""
+
 image:
   repository: k8smaestro/shipy-webapp
   pullPolicy: IfNotPresent
