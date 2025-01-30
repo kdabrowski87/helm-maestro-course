@@ -93,13 +93,13 @@ resources:
     cpu: 256m
 
 livenessProbe:
-  httpGet:
-    path: /
-    port: http
+  enabled: false
+  path: "/"
+  port: "http"
 readinessProbe:
-  httpGet:
-    path: /
-    port: http
+  enabled: false
+  path: "/"
+  port: "http"
 
 # Additional volumes on the output Deployment definition.
 volumes: []
